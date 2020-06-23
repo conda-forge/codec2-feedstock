@@ -56,6 +56,7 @@ test:
     - test -f $PREFIX/lib/libcodec2${SHLIB_EXT}  # [not win]
     - if not exist %PREFIX%\\Library\\bin\\libcodec2.dll exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\libcodec2.dll.a exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\libcodec2.lib exit 1  # [win]
 
 about:
   home: http://www.rowetel.com/codec2.html
