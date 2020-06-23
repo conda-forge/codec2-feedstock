@@ -10,6 +10,7 @@ if errorlevel 1 exit 1
 :: configure
 cmake -G "Ninja" ^
     -DCMAKE_BUILD_TYPE:STRING=Release ^
+    -DCMAKE_GNUtoMS ^
     -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_INSTALL_LIBDIR:PATH="lib" ^
     -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
