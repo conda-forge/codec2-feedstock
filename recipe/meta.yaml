@@ -12,7 +12,7 @@ source:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('codec2', max_pin='x.x') }}
 
@@ -56,6 +56,7 @@ test:
     - test -f $PREFIX/lib/libcodec2${SHLIB_EXT}  # [not win]
     - if not exist %PREFIX%\\Library\\bin\\libcodec2.dll exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\libcodec2.dll.a exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\libcodec2.lib exit 1  # [win]
 
 about:
   home: http://www.rowetel.com/codec2.html
