@@ -12,7 +12,7 @@ source:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('codec2', max_pin='x.x') }}
 
