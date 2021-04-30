@@ -5,6 +5,15 @@ set -ex
 mkdir build
 cd build
 
+# clear variables that are not necessary thanks to CMAKE_ARGS but prevent
+# in-tree native build of generate_codebook (picked up by CMAKE without flags)
+unset AR
+unset CC
+unset LD
+unset NM
+unset RANLIB
+unset STRIP
+
 cmake_config_args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=$PREFIX
