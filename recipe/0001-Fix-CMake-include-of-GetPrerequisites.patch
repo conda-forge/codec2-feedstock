@@ -1,4 +1,4 @@
-From abc853751bd83b9ec844f346af867e56b9b37108 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ryan Volz <rvolz@mit.edu>
 Date: Fri, 19 Jun 2020 17:25:24 -0400
 Subject: [PATCH] Fix CMake include of GetPrerequisites.
@@ -21,5 +21,5 @@ index 0d25f670..cfb13230 100644
  foreach(_runtime ${_deps})
      message("Looking for ${_runtime}")
 -- 
-2.20.1
+2.30.2
 

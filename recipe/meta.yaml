@@ -10,6 +10,7 @@ source:
   sha256: 19181a446f4df3e6d616b50cabdac4485abb9cd3242cf312a0785f892ed4c76c
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
+    - 0002-Make-native-build-compatible-with-cmake-within-cmake.patch
 
 build:
   number: 1
@@ -22,8 +23,7 @@ requirements:
     # upstream does not support compiling with MSVC
     - {{ compiler('m2w64_c') }}  # [win]
     - cmake
-    - make  # [not win]
-    - ninja  # [win]
+    - ninja
 
 test:
   commands:
