@@ -12,6 +12,6 @@ cmake_config_args=(
     -DBUILD_SHARED_LIBS=ON
 )
 
-cmake .. "${cmake_config_args[@]}"
+cmake ${CMAKE_ARGS} .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
 cmake --build . --config Release --target install
