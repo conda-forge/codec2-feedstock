@@ -7,6 +7,8 @@ cd build
 
 # clear variables that are not necessary thanks to CMAKE_ARGS but prevent
 # in-tree native build of generate_codebook (picked up by CMAKE without flags)
+# but preserve CC first as a CMAKE arg
+CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_C_COMPILER=$CC"
 unset AR
 unset CC
 unset LD
