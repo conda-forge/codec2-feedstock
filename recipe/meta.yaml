@@ -23,8 +23,7 @@ requirements:
     # upstream does not support compiling with MSVC
     - {{ compiler('m2w64_c') }}  # [win]
     - cmake
-    - make  # [not win]
-    - ninja  # [win]
+    - ninja
 
 test:
   commands:
