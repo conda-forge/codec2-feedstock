@@ -1,5 +1,5 @@
 {% set name = "codec2" %}
-{% set version = "0.9.2" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/drowe67/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 19181a446f4df3e6d616b50cabdac4485abb9cd3242cf312a0785f892ed4c76c
+  sha256: 020f34dfa08cf66126633b3899a2f732995ffd471f512254c601e17cc561985d
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Make-native-build-compatible-with-cmake-within-cmake.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('codec2', max_pin='x.x') }}
 
@@ -53,7 +53,7 @@ about:
   license: LGPL-2.1-or-later
   license_family: LGPL
   license_file: COPYING
-  summary: 'An open source low bit rate speech codec'
+  summary: An open source low bit rate speech codec
   description: |
     Open source speech codec designed for communications quality speech between 450
     and 3200 bit/s. The main application is low bandwidth HF/VHF digital radio.
