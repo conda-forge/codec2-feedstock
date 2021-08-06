@@ -62,6 +62,8 @@ outputs:
         - {{ compiler('m2w64_c') }}  # [win]
         - cmake
         - ninja
+      host:
+        - libcodec2
       run:
         - {{ pin_subpackage('libcodec2', exact=True) }}
     test:
