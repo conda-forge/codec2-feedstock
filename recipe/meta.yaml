@@ -85,8 +85,8 @@ outputs:
         {% set cmds = cmds + ["ofdm_put_test_bits", "tollr"] %}
         {% set cmds = cmds + ["vhf_deframe_c2", "vhf_frame_c2"] %}
         {% for cmd in cmds %}
-        - {{ cmd }} --help || ec=$?; if [ $ec -gt 1 ]; then exit $ec; fi  # [not win]
-        - {{ cmd }} --help || if !ERRORLEVEL! LEQ 1 cmd /c "exit /b 0"  # [win]
+        - {{ cmd }} || ec=$?; if [ $ec -gt 1 ]; then exit $ec; fi  # [not win]
+        - {{ cmd }} || if !ERRORLEVEL! LEQ 1 cmd /c "exit /b 0"  # [win]
         {% endfor %}
 
 about:
