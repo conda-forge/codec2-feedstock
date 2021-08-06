@@ -4,5 +4,7 @@ setlocal EnableDelayedExpansion
 cd build
 if errorlevel 1 exit 1
 
-copy src\*.exe "%LIBRARY_BIN%"\
+:: call install script directly because executing the install target re-builds
+:: (in that case, the re-build happens because timestamps have changed)
+cmake -DCOMPONENT=programs -P cmake_install.cmake
 if errorlevel 1 exit 1

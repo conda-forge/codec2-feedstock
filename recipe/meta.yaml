@@ -10,6 +10,7 @@ source:
   sha256: 020f34dfa08cf66126633b3899a2f732995ffd471f512254c601e17cc561985d
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
+    - 0002-Add-optional-installation-of-command-line-programs.patch
 
 build:
   number: 0
