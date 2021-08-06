@@ -82,8 +82,7 @@ outputs:
         {% set cmds = cmds + ["fsk_mod_ext_vco", "fsk_put_test_bits", "insert_errors"] %}
         {% set cmds = cmds + ["ldpc_dec", "ldpc_enc", "ldpc_noise"] %}
         {% set cmds = cmds + ["ofdm_demod", "ofdm_get_test_bits", "ofdm_mod"] %}
-        {% set cmds = cmds + ["ofdm_put_test_bits", "tollr"] %}
-        {% set cmds = cmds + ["vhf_deframe_c2", "vhf_frame_c2"] %}
+        {% set cmds = cmds + ["ofdm_put_test_bits", "vhf_deframe_c2", "vhf_frame_c2"] %}
         {% for cmd in cmds %}
         - {{ cmd }} || ec=$?; if [ $ec -gt 1 ]; then exit $ec; fi  # [not win]
         - {{ cmd }} || if !ERRORLEVEL! LEQ 1 cmd /c "exit /b 0"  # [win]
