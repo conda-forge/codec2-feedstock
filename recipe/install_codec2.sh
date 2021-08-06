@@ -51,4 +51,4 @@ cmd_list=(
     vhf_frame_c2
 )
 
-cp "${cmd_list[@]}" "$PREFIX/bin"
+cmake -E copy "${cmd_list[@]}" "$PREFIX/bin"
