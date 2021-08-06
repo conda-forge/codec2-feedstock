@@ -102,6 +102,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-codec2-green.svg)](https://anaconda.org/conda-forge/codec2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/codec2.svg)](https://anaconda.org/conda-forge/codec2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/codec2.svg)](https://anaconda.org/conda-forge/codec2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/codec2.svg)](https://anaconda.org/conda-forge/codec2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libcodec2-green.svg)](https://anaconda.org/conda-forge/libcodec2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libcodec2.svg)](https://anaconda.org/conda-forge/libcodec2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libcodec2.svg)](https://anaconda.org/conda-forge/libcodec2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libcodec2.svg)](https://anaconda.org/conda-forge/libcodec2) |
 
 Installing codec2
 =================
@@ -113,10 +114,10 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `codec2` can be installed with:
+Once the `conda-forge` channel has been enabled, `codec2, libcodec2` can be installed with:
 
 ```
-conda install codec2
+conda install codec2 libcodec2
 ```
 
 It is possible to list all of the versions of `codec2` available on your platform with:
