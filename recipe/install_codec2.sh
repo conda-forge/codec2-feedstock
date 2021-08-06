@@ -4,6 +4,8 @@ set -ex
 
 cd build/src
 
+mkdir -p "$PREFIX/bin"
+
 cmd_list=(
     c2enc
     c2dec
