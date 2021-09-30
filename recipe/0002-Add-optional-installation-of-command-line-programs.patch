@@ -8,10 +8,10 @@ Subject: [PATCH] Add optional installation of command-line programs.
  1 file changed, 46 insertions(+)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 698910b9..d60c0b42 100644
+index 7f48ad5f..c82dc1c8 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -397,3 +397,49 @@ install(TARGETS codec2 EXPORT codec2-config
+@@ -399,3 +399,49 @@ install(TARGETS codec2 EXPORT codec2-config
      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
      PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/codec2 COMPONENT dev
  )
@@ -62,5 +62,5 @@ index 698910b9..d60c0b42 100644
 +    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT programs EXCLUDE_FROM_ALL
 +)
 -- 
-2.25.1
+2.32.0
 
