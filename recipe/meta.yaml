@@ -1,5 +1,5 @@
 {% set name = "codec2" %}
-{% set version = "1.0.1" %}
+{% set version = "1.03" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/drowe67/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 14227963940d79e0ec5af810f37101b30e1c7e8555abd96c56b3c0473abac8ef
+  sha256: d1b156035b806fd89a29371a5ab0eefca3ccecfeff303dac0672c59d5c0c1235
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Add-optional-installation-of-command-line-programs.patch
     - 0003-Include-complex.h-in-freedv_api.h-since-it-now-uses-.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
