@@ -18,6 +18,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}  # [not win]
+    - {{ compiler('cxx') }}  # [not win]
     # upstream does not support compiling with MSVC
     - {{ compiler('m2w64_c') }}  # [win]
     - cmake
