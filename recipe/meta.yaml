@@ -11,7 +11,6 @@ source:
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Add-optional-installation-of-command-line-programs.patch
-    - 0003-Include-complex.h-in-freedv_api.h-since-it-now-uses-.patch
 
 build:
   number: 0
