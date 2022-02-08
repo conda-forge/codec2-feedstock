@@ -1,5 +1,5 @@
 {% set name = "codec2" %}
-{% set version = "1.03" %}
+{% set version = "1.0.3" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/drowe67/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: d1b156035b806fd89a29371a5ab0eefca3ccecfeff303dac0672c59d5c0c1235
+  sha256: 48162d562ea3bf4ca273f3c45df04505a006bd9a2b376006c75706c4de957da7
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Add-optional-installation-of-command-line-programs.patch
