@@ -8,9 +8,8 @@ cd build
 if errorlevel 1 exit 1
 
 :: configure
-cmake -G "Ninja" ^
+cmake -G "Ninja" %CMAKE_ARGS% ^
     -DCMAKE_BUILD_TYPE:STRING=Release ^
-    -DCMAKE_C_COMPILER=gcc ^
     -DCMAKE_GNUtoMS=ON ^
     -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_INSTALL_LIBDIR:PATH="lib" ^
