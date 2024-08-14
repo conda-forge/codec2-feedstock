@@ -15,11 +15,22 @@ cmake_config_args=(
     -DCMAKE_INSTALL_LIBDIR=lib
     -DCMAKE_PREFIX_PATH=$PREFIX
     -DBUILD_SHARED_LIBS=ON
-    -DCMAKE_C_COMPILER=$CC
-    -DCMAKE_CXX_COMPILER=$CXX
     -DCMAKE_C_FLAGS="$CFLAGS"
     -DCMAKE_CXX_FLAGS="$CXXFLAGS"
 )
+
+if [[ "$target_platform" == "win-64" ]]; then
+    cmake_config_args+=(
+        -DCMAKE_GNUtoMS=ON
+        -DCMAKE_C_COMPILER=$CC.exe
+        -DCMAKE_CXX_COMPILER=$CXX.exe
+    )
+else
+    cmake_config_args+=(
+        -DCMAKE_C_COMPILER=$CC
+        -DCMAKE_CXX_COMPILER=$CXX
+    )
+fi
 
 # clear variables that are not necessary thanks to CMAKE_ARGS but prevent
 # in-tree native build of generate_codebook (picked up by CMAKE without flags)
@@ -36,12 +47,6 @@ unset STRIP
 # because we set CMAKE_C(XX)_COMPILER
 CC="$CC_FOR_BUILD"
 CXX="$CXX_FOR_BUILD"
-
-if [[ "$target_platform" == "win-64" ]]; then
-    cmake_config_args+=(
-        -DCMAKE_GNUtoMS=ON
-    )
-fi
 
 cmake -G "Ninja" ${CMAKE_ARGS} .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
