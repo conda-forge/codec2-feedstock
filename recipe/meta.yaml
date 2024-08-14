@@ -1,4 +1,8 @@
 {% set version = "1.0.3" %}
+{% if build_platform is undefined %}
+{% set build_platform = "linux-64" %}
+{% endif %}
+{% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
   name: codec2-split
@@ -20,6 +24,8 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - cmake
+    - {{ posix }}base  # [build_platform.startswith("win-")]
+    - {{ posix }}diffutils  # [build_platform.startswith("win-")]
     - ninja
 
 outputs:
