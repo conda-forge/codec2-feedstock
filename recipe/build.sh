@@ -5,6 +5,10 @@ set -ex
 mkdir build
 cd build
 
+if [[ "$target_platform" == "win-64" ]]; then
+  export PREFIX=${PREFIX}/Library
+fi
+
 # clear variables that are not necessary thanks to CMAKE_ARGS but prevent
 # in-tree native build of generate_codebook (picked up by CMAKE without flags)
 # but preserve CC and CXX first as a CMAKE arg
@@ -26,8 +30,15 @@ cmake_config_args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=$PREFIX
     -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_PREFIX_PATH=$PREFIX
     -DBUILD_SHARED_LIBS=ON
 )
+
+if [[ "$target_platform" == "win-64" ]]; then
+    cmake_config_args+=(
+        -DCMAKE_GNUtoMS=ON
+    )
+fi
 
 cmake -G "Ninja" ${CMAKE_ARGS} .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
