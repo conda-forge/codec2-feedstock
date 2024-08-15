@@ -4,14 +4,14 @@ Date: Fri, 6 Aug 2021 13:12:21 -0400
 Subject: [PATCH] Add optional installation of command-line programs.
 
 ---
- src/CMakeLists.txt | 46 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 46 insertions(+)
+ src/CMakeLists.txt | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 7f48ad5f..c82dc1c8 100644
+index fb10d287..d4407ebb 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -399,3 +399,49 @@ install(TARGETS codec2 EXPORT codec2-config
+@@ -385,3 +385,42 @@ install(TARGETS codec2 EXPORT codec2-config
      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
      PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/codec2 COMPONENT dev
  )
@@ -20,20 +20,15 @@ index 7f48ad5f..c82dc1c8 100644
 +    c2enc
 +    c2dec
 +    c2sim
-+    cohpsk_ch
 +    cohpsk_demod
 +    cohpsk_get_test_bits
 +    cohpsk_mod
 +    cohpsk_put_test_bits
 +    deframer
-+    fdmdv_channel
 +    fdmdv_demod
 +    fdmdv_get_test_bits
 +    fdmdv_mod
 +    fdmdv_put_test_bits
-+    fm_demod
-+    fmfsk_demod
-+    fmfsk_mod
 +    framer
 +    freedv_data_raw_rx
 +    freedv_data_raw_tx
@@ -46,9 +41,7 @@ index 7f48ad5f..c82dc1c8 100644
 +    fsk_demod
 +    fsk_get_test_bits
 +    fsk_mod
-+    fsk_mod_ext_vco
 +    fsk_put_test_bits
-+    insert_errors
 +    ldpc_dec
 +    ldpc_enc
 +    ldpc_noise
@@ -62,5 +55,5 @@ index 7f48ad5f..c82dc1c8 100644
 +    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT programs EXCLUDE_FROM_ALL
 +)
 -- 
-2.32.0
+2.34.1
 
