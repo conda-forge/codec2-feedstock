@@ -1,27 +1,31 @@
-{% set name = "codec2" %}
 {% set version = "1.0.3" %}
+{% if build_platform is undefined %}
+{% set build_platform = "linux-64" %}
+{% endif %}
+{% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
-  name: {{ name|lower }}-split
+  name: codec2-split
   version: {{ version }}
 
 source:
-  url: https://github.com/drowe67/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 48162d562ea3bf4ca273f3c45df04505a006bd9a2b376006c75706c4de957da7
+  url: https://github.com/drowe67/codec2-dev/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 4a20f3032eb2dc073c73df6b252002817e920ae19991a5e497dd3eb6c24f9ec9
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Add-optional-installation-of-command-line-programs.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [not win]
-    - {{ compiler('cxx') }}  # [not win]
-    # upstream does not support compiling with MSVC
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake
+    - {{ posix }}base  # [build_platform.startswith("win-")]
+    - {{ posix }}diffutils  # [build_platform.startswith("win-")]
     - ninja
 
 outputs:
@@ -33,8 +37,8 @@ outputs:
         - {{ pin_subpackage('libcodec2', max_pin='x.x') }}
     requirements:
       build:
-        - {{ compiler('c') }}  # [not win]
-        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - cmake
         - ninja
     test:
@@ -59,8 +63,8 @@ outputs:
         - {{ pin_subpackage('libcodec2', max_pin='x.x') }}
     requirements:
       build:
-        - {{ compiler('c') }}  # [not win]
-        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - cmake
         - ninja
       host:
