@@ -1,4 +1,4 @@
-{% set version = "1.0.3" %}
+{% set version = "1.2.0" %}
 {% if build_platform is undefined %}
 {% set build_platform = "linux-64" %}
 {% endif %}
@@ -9,14 +9,14 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/drowe67/codec2-dev/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 4a20f3032eb2dc073c73df6b252002817e920ae19991a5e497dd3eb6c24f9ec9
+  url: https://github.com/drowe67/codec2/archive/refs/tags/{{ version }}.tar.gz
+  sha256: cbccae52b2c2ecc5d2757e407da567eb681241ff8dadce39d779a7219dbcf449
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Add-optional-installation-of-command-line-programs.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
