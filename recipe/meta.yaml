@@ -1,4 +1,4 @@
-{% set version = "1.0.3" %}
+{% set version = "1.2.0" %}
 {% if build_platform is undefined %}
 {% set build_platform = "linux-64" %}
 {% endif %}
@@ -9,19 +9,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/drowe67/codec2-dev/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 4a20f3032eb2dc073c73df6b252002817e920ae19991a5e497dd3eb6c24f9ec9
+  url: https://github.com/drowe67/codec2/archive/refs/tags/{{ version }}.tar.gz
+  sha256: cbccae52b2c2ecc5d2757e407da567eb681241ff8dadce39d779a7219dbcf449
   patches:
     - 0001-Fix-CMake-include-of-GetPrerequisites.patch
     - 0002-Add-optional-installation-of-command-line-programs.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - cmake
     - {{ posix }}base  # [build_platform.startswith("win-")]
@@ -76,17 +75,17 @@ outputs:
         # verify that executables can be run
         # don't test ofdm_demod, ofdm_mod, and tollr
         # because they don't conform to the pattern (print usage, return 1)
-        {% set cmds = ["c2dec", "c2enc", "c2sim", "cohpsk_ch", "cohpsk_demod"] %}
+        {% set cmds = ["c2dec", "c2enc", "c2sim", "cohpsk_demod"] %}
         {% set cmds = cmds + ["cohpsk_get_test_bits", "cohpsk_mod", "cohpsk_put_test_bits"] %}
-        {% set cmds = cmds + ["deframer", "fdmdv_channel", "fdmdv_demod"] %}
+        {% set cmds = cmds + ["deframer", "fdmdv_demod"] %}
         {% set cmds = cmds + ["fdmdv_get_test_bits", "fdmdv_mod", "fdmdv_put_test_bits"] %}
-        {% set cmds = cmds + ["fm_demod", "fmfsk_demod", "fmfsk_mod", "framer"] %}
+        {% set cmds = cmds + ["framer"] %}
         {% set cmds = cmds + ["freedv_data_raw_rx", "freedv_data_raw_tx"] %}
         {% set cmds = cmds + ["freedv_data_rx", "freedv_data_tx"] %}
         {% set cmds = cmds + ["freedv_mixed_rx", "freedv_mixed_tx"] %}
         {% set cmds = cmds + ["freedv_rx", "freedv_tx"] %}
         {% set cmds = cmds + ["fsk_demod", "fsk_get_test_bits", "fsk_mod"] %}
-        {% set cmds = cmds + ["fsk_mod_ext_vco", "fsk_put_test_bits", "insert_errors"] %}
+        {% set cmds = cmds + ["fsk_put_test_bits"] %}
         {% set cmds = cmds + ["ldpc_dec", "ldpc_enc", "ldpc_noise"] %}
         {% set cmds = cmds + ["ofdm_get_test_bits", "ofdm_put_test_bits"] %}
         {% set cmds = cmds + ["vhf_deframe_c2", "vhf_frame_c2"] %}

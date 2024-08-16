@@ -1,6 +1,4 @@
 c_compiler:        # [win]
   - gcc            # [win]
-cxx_compiler:      # [win]
-  - gxx            # [win]
 c_stdlib:          # [win]
   - m2w64-sysroot  # [win]
