@@ -16,7 +16,7 @@ source:
     - 0002-Add-optional-installation-of-command-line-programs.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -34,6 +34,9 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libcodec2', max_pin='x.x') }}
+      ignore_run_exports:
+        - libwinpthread
+        - ucrt
     requirements:
       build:
         - {{ compiler('c') }}
@@ -60,6 +63,9 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libcodec2', max_pin='x.x') }}
+      ignore_run_exports:
+        - libgcc
+        - libwinpthread
     requirements:
       build:
         - {{ compiler('c') }}
