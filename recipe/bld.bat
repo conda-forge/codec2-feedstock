@@ -1,15 +1,23 @@
-echo source %SYS_PREFIX:\=/%/etc/profile.d/conda.sh    > conda_build.sh
-echo conda activate "${PREFIX}"                       >> conda_build.sh
-echo conda activate --stack "${BUILD_PREFIX}"         >> conda_build.sh
-echo CONDA_PREFIX=${CONDA_PREFIX//\\//}               >> conda_build.sh
-type "%RECIPE_DIR%\build.sh"                          >> conda_build.sh
+setlocal EnableDelayedExpansion
+@echo on
 
-set PREFIX=%PREFIX:\=/%
-set BUILD_PREFIX=%BUILD_PREFIX:\=/%
-set CONDA_PREFIX=%CONDA_PREFIX:\=/%
-set SRC_DIR=%SRC_DIR:\=/%
-set MSYSTEM=UCRT64
-set MSYS2_PATH_TYPE=inherit
-set CHERE_INVOKING=1
-bash -lc "./conda_build.sh"
+:: Make a build folder and change to it
+mkdir build
+if errorlevel 1 exit 1
+cd build
+if errorlevel 1 exit 1
+
+:: configure
+cmake -G "Ninja" ^
+    -DCMAKE_BUILD_TYPE:STRING=Release ^
+    -DCMAKE_GNUtoMS=ON ^
+    -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
+    -DCMAKE_INSTALL_LIBDIR:PATH="lib" ^
+    -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
+    -DBUILD_SHARED_LIBS=ON ^
+    ..
+if errorlevel 1 exit 1
+
+:: build
+cmake --build . --config Release -- -j%CPU_COUNT%
 if errorlevel 1 exit 1

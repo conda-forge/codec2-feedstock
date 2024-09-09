@@ -1,8 +1,4 @@
 {% set version = "1.2.0" %}
-{% if build_platform is undefined %}
-{% set build_platform = "linux-64" %}
-{% endif %}
-{% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
   name: codec2-split
@@ -20,11 +16,11 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ stdlib('c') }}
+    - {{ compiler('c') }}  # [not win]
+    - {{ stdlib('c') }}  # [not win]
+    # upstream does not support compiling with MSVC
+    - {{ compiler('m2w64_c') }}  # [win]
     - cmake
-    - {{ posix }}base  # [build_platform.startswith("win-")]
-    - {{ posix }}diffutils  # [build_platform.startswith("win-")]
     - ninja
 
 outputs:
@@ -34,13 +30,11 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libcodec2', max_pin='x.x') }}
-      ignore_run_exports:
-        - libwinpthread  # [win]
-        - ucrt  # [win]
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib('c') }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
         - cmake
         - ninja
     test:
@@ -63,13 +57,11 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libcodec2', max_pin='x.x') }}
-      ignore_run_exports:
-        - libgcc  # [win]
-        - libwinpthread  # [win]
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib('c') }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
         - cmake
         - ninja
       host:
