@@ -12,7 +12,7 @@ source:
     - 0002-Add-optional-installation-of-command-line-programs.patch
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -20,6 +20,7 @@ requirements:
     - {{ stdlib('c') }}  # [not win]
     # upstream does not support compiling with MSVC
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib('m2w64_c') }}  # [win]
     - cmake
     - ninja
 
