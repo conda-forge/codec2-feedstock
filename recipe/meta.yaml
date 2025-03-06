@@ -20,6 +20,7 @@ requirements:
     - {{ stdlib('c') }}  # [not win]
     # upstream does not support compiling with MSVC
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib('m2w64_c') }}  # [win]
     - cmake
     - ninja
 
